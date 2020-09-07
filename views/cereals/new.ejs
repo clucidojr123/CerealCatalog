@@ -1,0 +1,26 @@
+<%- include("../partials/header.ejs") %> 
+<h1 class="form-title">Submit a New Cereal</h1>
+<div class="form-container">
+    <form id="cereal-form" action="/cereals" method="POST">
+        <div class="input-container">
+            <label  class="new-label" for="name">Name</label>
+            <input required class="new-input" type="text" name="name" placeholder="e.g Cheerios" autocomplete="off" autofocus>
+        </div>
+        <div class="input-container">
+            <label  class="new-label" for="description">Description</label>
+            <input required class="new-input" type="text" name="description" maxlength="100" autocomplete="off" placeholder="Made with oats and packed with healthy nutrients.">
+        </div>
+        <div class="input-container">
+            <label class="new-label" for="brand">Brand</label>
+            <input required class="new-input" type="text" name="brand" autocomplete="off" placeholder="Kellogg's">
+        </div>
+        <div class="input-container before-submit">
+            <label class="new-label" for="imageURL">Image Link</label>
+            <input required class="new-input" type="text" name="imageURL" autocomplete="off" placeholder="https://www.myimage.com"> 
+        </div>
+        <div class="input-container">
+            <button class="cereal-submit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<%- include("../partials/footer.ejs") %> 

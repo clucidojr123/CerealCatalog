@@ -1,0 +1,39 @@
+<%- include("../partials/header.ejs") %> 
+<div class="show-container">
+    <div class="show-image-container">
+        <img class="show-image" src="<%= cereal.imageURL %>" alt="<%= cereal.name %>">
+    </div>
+    <div class="show-details">
+        <h1 class="show-title"><%= cereal.name %></h1>
+        <p class="show-description"><%= cereal.description %> </p>
+        <p class="show-brand">Brand: <%= cereal.brand %> </p>
+        <p class="show-added">Added on <%= cereal.createdAt.toLocaleDateString() %> by <a href="#"><%= cereal.author.username %></a></p>
+        <% if(currentUser && (cereal.author.id.equals(currentUser._id) || currentUser.isAdmin)) { %> 
+            <a href="/cereals/<%= cereal._id %>/edit"><button class="change-btn edit-btn">Edit Cereal</button></a>
+            <form action="/cereals/<%= cereal._id %>?_method=DELETE" method="POST">
+                <a href="#"><button type="submit" class="change-btn delete-btn">Delete Cereal</button></a>
+            </form>
+        <% } %> 
+    </div>
+</div>
+<div class="show-comments-container">
+    <h3 class="comments-title">Comments (<%= comments.length %>)</h3>
+    <% comments.forEach(comment => { %>
+    <div class="comment">
+        <h4 class="comment-user"><a href="#"><%= comment.author.username %></a> <span id="comment-date">- <%= comment.createdAt.toLocaleDateString() %></span></h4>
+        <% if(currentUser && (comment.author.id.equals(currentUser._id) || currentUser.isAdmin)) { %> 
+            <div class="change-comment-container">
+                    <a href="/cereals/<%= cereal._id %>/comments/<%= comment._id %>/edit"><button class="change-comment-btn edit-btn">Edit</button></a>
+                    <form id="delete-comment" action="/cereals/<%= cereal._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <a href="#"><button class="change-comment-btn delete-btn" type="submit">Delete</button></a>
+                    </form>
+            </div>
+        <% } %> 
+        <p class="comment-text"><%= comment.text %></p>
+    </div>
+    <% }) %>
+</div>
+<div class="new-comment-container">
+    <a href="/cereals/<%= cereal._id %>/comments/new"><button id="new-comment-btn">New Comment</button></a>
+</div>
+<%- include("../partials/footer.ejs") %> 

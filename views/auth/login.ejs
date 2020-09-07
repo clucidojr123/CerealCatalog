@@ -1,0 +1,21 @@
+<%- include("../partials/header.ejs") %> 
+<h1 class="form-title">Login</h1>
+<div class="form-container">
+    <form id="login-form" action="/login" method="POST">
+        <div class="input-container">
+            <label  class="new-label" for="username">Username</label>
+            <input required class="new-input" type="text" name="username" placeholder="username" autocomplete="off" autofocus>
+        </div>
+        <div class="input-container before-submit">
+            <label  class="new-label" for="password">Password</label>
+            <input required class="new-input" type="password" name="password" minlength="6" placeholder="password">
+        </div>
+        <div class="input-container">
+            <button class="cereal-submit" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="register-link">
+        Don't have an account? <a id="register-here" href="/register">Register here!</a>
+    </div>
+</div>
+<%- include("../partials/footer.ejs") %> 

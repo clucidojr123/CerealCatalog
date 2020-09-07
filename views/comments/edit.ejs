@@ -1,0 +1,14 @@
+<%- include("../partials/header.ejs") %> 
+<h1 class="form-title">Edit comment</h1>
+<div class="form-container">
+    <form id="cereal-form" action="/cereals/<%= comment.cerealId %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <div class="input-container before-submit">
+            <label class="new-label" for="text">Comment</label>
+            <input required id="comment-input" class="new-input" type="text" name="text" value="<%= comment.text %>" autocomplete="off"> 
+        </div>
+        <div class="input-container">
+            <button class="cereal-submit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<%- include("../partials/footer.ejs") %> 

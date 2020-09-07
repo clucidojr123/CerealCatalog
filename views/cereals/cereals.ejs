@@ -1,0 +1,20 @@
+<%- include("../partials/header.ejs") %> 
+<% if(search && data.length != 0) { %>
+    <h1 class="search-success">Search Results (<%= data.length %>):</h1>  
+<% } %>
+<div class="container">
+    <% if(data.length === 0) { %>
+    <h1 class="search-fail">Sorry, your search did not return any cereals.</h1>  
+    <% } else { %>
+        <% data.forEach(cereal => { %>
+        <div class="card">
+        <a href="/cereals/<%= cereal._id %>">
+            <img class="card-img" src="<%= cereal.imageURL %>" alt="<%= cereal.name %> ">
+        </a>
+         <h3 class="card-name"><%= cereal.name %> </h3>
+         <p class="card-description"><%= cereal.description %> </p>
+        </div>
+    <% }) %>
+    <% } %> 
+</div>
+<%- include("../partials/footer.ejs") %> 
